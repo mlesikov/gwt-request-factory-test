@@ -18,7 +18,7 @@ public class PersonService {
 
 
   public Person findPersonById(Long id) {
-//    if (IN_MEMORY_PERSON == null) {
+    if (IN_MEMORY_PERSON == null) {
       Person p = new Person();
 //      p.setId("1");
       p.setName("Mihail Lesikov");
@@ -33,9 +33,13 @@ public class PersonService {
 
       p.setAddress(address);
       return p;
+    } else {
+      return IN_MEMORY_PERSON;
+    }
   }
 
   public void persist(Person person) {
+    IN_MEMORY_PERSON = person;
     System.out.println(person.toString());
   }
 }

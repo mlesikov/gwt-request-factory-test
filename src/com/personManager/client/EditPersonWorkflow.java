@@ -3,8 +3,6 @@ package com.personManager.client;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.requestfactory.client.RequestFactoryEditorDriver;
 import com.google.gwt.requestfactory.shared.Receiver;
-import com.google.gwt.requestfactory.shared.RequestContext;
-import com.google.gwt.requestfactory.shared.RequestFactory;
 import com.personManager.shared.PersonProxy;
 import com.personManager.shared.PersonRequest;
 import com.personManager.shared.PersonRequestFactory;
@@ -15,7 +13,8 @@ import com.personManager.shared.PersonRequestFactory;
  */
 public class EditPersonWorkflow {
   private PersonEditor personEditor;
-  private RequestFactory requestFactory;
+  private PersonRequestFactory requestFactory;
+  private PersonProxy personProxy;
 
 
   // Empty interface declaration, similar to UiBinder
@@ -25,18 +24,20 @@ public class EditPersonWorkflow {
   // Create the Driver
   private Driver driver = GWT.create(Driver.class);
 
-  public EditPersonWorkflow(PersonEditor personEditor, PersonRequestFactory requestFactory) {
+  public EditPersonWorkflow(PersonEditor personEditor, PersonRequestFactory requestFactory, PersonProxy personProxy) {
     this.personEditor = personEditor;
     this.requestFactory = requestFactory;
+    this.personProxy = personProxy;
   }
 
-  void edit(PersonProxy p, RequestContext requestContext) {
+  void edit(PersonRequest request) {
     // PersonEditor is a DialogBox that extends Editor<Person>
 //    PersonEditor editor = new PersonEditor();
     // Initialize the driver with the top-level editor
-    driver.initialize(requestFactory, personEditor);
+    driver.initialize(personEditor);
     // Copy the data in the object into the UI
-    driver.edit(p, requestContext);
+    request.persist(personProxy);
+    driver.edit(personProxy, request);
   }
 
   // Called by some UI action
@@ -44,13 +45,15 @@ public class EditPersonWorkflow {
     PersonRequest requestContext = (PersonRequest) driver.flush();
 
 //    if (driver.hasErrors()) {
-      // A sub-editor reported errors
+    // A sub-editor reported errors
 //    }
 
-    requestContext.persist(personEditor.getPersonProxy()).fire(new Receiver<Void>() {
+    requestContext.fire(new Receiver<Void>() {
       @Override
       public void onSuccess(Void response) {
         GWT.log("successfully saved");
+//        personProxy = personEditor.getPersonProxy();
+        edit(requestFactory.getPersonRequest());
       }
     });
 
