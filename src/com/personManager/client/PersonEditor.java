@@ -16,18 +16,18 @@ import com.personManager.shared.PersonProxy;
 public class PersonEditor extends Composite implements Editor<PersonProxy> {
   interface PersonEditorBinder extends UiBinder<Widget, PersonEditor> {
 
-
   }
+
   interface Driver extends SimpleBeanEditorDriver<PersonProxy, PersonEditor> {
 
   }
+
   private static PersonEditorBinder uiBinder = GWT.create(PersonEditorBinder.class);
 
   private Driver driver;
 
   @UiField
   public ValueBoxEditorDecorator<String> name;
-
 
   @UiField
   public ValueBoxEditorDecorator<Integer> age;
@@ -53,8 +53,5 @@ public class PersonEditor extends Composite implements Editor<PersonProxy> {
   //  public ValueBoxEditorDecorator<Date> date;
   public void clear() {
     driver.initialize(this);
-
   }
-
-
 }

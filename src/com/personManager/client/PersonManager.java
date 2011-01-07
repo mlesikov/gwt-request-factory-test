@@ -31,10 +31,8 @@ public class PersonManager implements EntryPoint {
   PersonEditor personEditor = new PersonEditor();
   PersonProxy personProxy;
 
-  private PersonRequest editPersonRequest;
 
-
-  private EditPersonWorkflow editPersonWorkflow;
+  private EditPersonWorkflowPresenter editPersonWorkflowPresenter;
 
   public void onModuleLoad() {
 
@@ -63,8 +61,9 @@ public class PersonManager implements EntryPoint {
 //            editPersonRequest = requestFactory.getPersonRequest();
 //
 //            personEditor.editPersonProxy(editPersonRequest.edit(personProxy));
-            editPersonWorkflow = new EditPersonWorkflow(personEditor,requestFactory,response);
-            editPersonWorkflow.edit(requestFactory.getPersonRequest());
+            editPersonWorkflowPresenter = new EditPersonWorkflowPresenter(requestFactory, response);
+            editPersonWorkflowPresenter.bindDisplay(new EditPersonWorkflowDisplay(personEditor, requestFactory));
+            editPersonWorkflowPresenter.edit(requestFactory.getPersonRequest());
           }
         });
       }
@@ -74,7 +73,7 @@ public class PersonManager implements EntryPoint {
     savePersonButton.addClickHandler(new ClickHandler() {
       public void onClick(ClickEvent event) {
 
-        editPersonWorkflow.save();
+        editPersonWorkflowPresenter.onSave();
 
 //        personProxy = personEditor.getPersonProxy();
 //
