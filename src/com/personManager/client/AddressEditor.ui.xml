@@ -1,0 +1,49 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:date='urn:import:com.google.gwt.user.datepicker.client'
+             xmlns:e="urn:import:com.google.gwt.editor.ui.client"
+        >
+
+
+  <ui:style>
+    .contractEid {
+      width: 150px;
+    }
+
+  </ui:style>
+
+  <g:HTMLPanel>
+
+    <g:CaptionPanel captionText="Address">
+
+      <g:HTMLPanel>
+        <span>ГРАД:</span>
+        <e:ValueBoxEditorDecorator ui:field="city">
+          <e:valuebox>
+            <g:TextBox stylePrimaryName="{style.contractEid}"/>
+          </e:valuebox>
+        </e:ValueBoxEditorDecorator>
+        <br/>
+
+        <span>УЛИЦА:</span>
+        <e:ValueBoxEditorDecorator ui:field="street">
+          <e:valuebox>
+            <g:TextBox stylePrimaryName="{style.contractEid}"/>
+          </e:valuebox>
+        </e:ValueBoxEditorDecorator>
+        <br/>
+
+        <span>КОД:</span>
+        <e:ValueBoxEditorDecorator ui:field="zip">
+          <e:valuebox>
+            <g:TextBox stylePrimaryName="{style.contractEid}"/>
+          </e:valuebox>
+        </e:ValueBoxEditorDecorator>
+        <br/>
+
+      </g:HTMLPanel>
+
+    </g:CaptionPanel>
+
+  </g:HTMLPanel>
+</ui:UiBinder>

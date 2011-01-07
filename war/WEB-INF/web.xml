@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
+
+  <!--<servlet>-->
+    <!--<servlet-name>requestFactoryServlet</servlet-name>-->
+    <!--<servlet-class>com.google.gwt.requestfactory.server.RequestFactoryServlet</servlet-class>-->
+    <!--<init-param>-->
+      <!--<param-name>symbolMapsDirectory</param-name>-->
+      <!--&lt;!&ndash; You'll need to compile with -extras and move the symbolMaps directory-->
+           <!--to this location if you want stack trace deobfuscation to work &ndash;&gt;-->
+      <!--<param-value>WEB-INF/classes/symbolMaps/</param-value>-->
+    <!--</init-param>-->
+  <!--</servlet>-->
+
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>requestFactoryServlet</servlet-name>-->
+    <!--<url-pattern>/gwtRequest</url-pattern>-->
+  <!--</servlet-mapping>-->
+
+  <!--<servlet>-->
+    <!--<servlet-name>com.personManager.personManager personManagerService</servlet-name>-->
+    <!--<servlet-class>com.personManager.server.PersonManagerServiceImpl</servlet-class>-->
+  <!--</servlet>-->
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>com.personManager.personManager personManagerService</servlet-name>-->
+    <!--<url-pattern>/personManager/personManagerService</url-pattern>-->
+  <!--</servlet-mapping>-->
+
+
+  <filter>
+    <filter-name>guiceFilter</filter-name>
+    <filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>guiceFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <listener>
+  <listener-class>com.personManager.server.MyGuiceServletConfig</listener-class>
+</listener>
+</web-app>

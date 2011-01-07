@@ -1,0 +1,62 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:date='urn:import:com.google.gwt.user.datepicker.client'
+             xmlns:address='urn:import:com.personManager.client'
+             xmlns:e="urn:import:com.google.gwt.editor.ui.client"
+
+        >
+
+
+  <ui:style>
+    .contractEid {
+      width: 150px;
+    }
+
+    .date {
+      width: 70px;
+    }
+
+  </ui:style>
+
+  <g:HTMLPanel>
+
+    <g:CaptionPanel captionText="Person">
+
+      <g:HTMLPanel>
+        <div>
+          <span>ИМЕ:</span>
+          <e:ValueBoxEditorDecorator ui:field="name">
+            <e:valuebox>
+            <g:TextBox stylePrimaryName="{style.contractEid}"/>
+            </e:valuebox>
+          </e:ValueBoxEditorDecorator>
+          <br/>
+
+          <span>ВЪЗРАСТ:</span>
+          <e:ValueBoxEditorDecorator ui:field="age">
+            <e:valuebox>
+            <g:IntegerBox stylePrimaryName="{style.contractEid}"/>
+            </e:valuebox>
+          </e:ValueBoxEditorDecorator>
+          <br/>
+
+          <!--<span>ДАТА:</span>-->
+          <!--<e:ValueBoxEditorDecorator ui:field="date">-->
+            <!--<e:valuebox>-->
+            <!--<g:DatePoser stylePrimaryName="{style.contractEid}"/>-->
+            <!--</e:valuebox>-->
+          <!--</e:ValueBoxEditorDecorator>-->
+          <!--<br/>-->
+
+        </div>
+
+
+      </g:HTMLPanel>
+
+
+    </g:CaptionPanel>
+
+    <address:AddressEditor ui:field="address"/>
+
+  </g:HTMLPanel>
+</ui:UiBinder>
