@@ -9,7 +9,7 @@ public class MyServiceLocator implements ServiceLocator {
 
   public Object getInstance(Class<?> clazz) {
 
-    Object i = GuiceFactory.getInjector().getInstance(clazz);
-    return i;
+    Object object = GuiceFactory.getInjector().getInstance(clazz);
+    return object;
   }
 }
