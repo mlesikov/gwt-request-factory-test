@@ -210,6 +210,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
   </component>
+  <component name="WebServicesPlugin" addRequiredLibraries="true" />
   <component name="atlassian-ide-plugin-workspace">
     <option name="bambooConfiguration">
       <BambooWorkspaceConfiguration>
